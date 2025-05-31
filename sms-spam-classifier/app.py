@@ -5,6 +5,8 @@ import nltk
 import string
 from nltk.stem.porter import PorterStemmer
 
+nltk.downloa('punkt')
+
 # Initialize the stemmer
 ps = PorterStemmer()
 
@@ -14,7 +16,7 @@ st.set_page_config("Sms spam classifier")
 # Function to preprocess and transform text
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text)
+    text = nltk.word_tokenize(text,language='english')
     y = []
 
     # Keep only alphanumeric tokens
