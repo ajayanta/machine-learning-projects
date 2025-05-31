@@ -46,7 +46,7 @@ def transform_text(text):
 with open("vectorizer.pkl", 'rb') as f:
     cv = pickle.load(f)
 
-with open("Model.pkl", 'rb') as f:
+with open("model.pkl", 'rb') as f:
     model = pickle.load(f)
 
 # Streamlit UI
