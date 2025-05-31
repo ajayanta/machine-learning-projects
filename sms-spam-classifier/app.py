@@ -5,18 +5,18 @@ import nltk
 import string
 from nltk.stem.porter import PorterStemmer
 
-nltk.downloa('punkt')
+nltk.download('punkt')  # fix typo here
 
 # Initialize the stemmer
 ps = PorterStemmer()
 
 # Set the Streamlit page configuration
-st.set_page_config("Sms spam classifier")
+st.set_page_config(page_title="Sms spam classifier")  # optional fix typo here too
 
 # Function to preprocess and transform text
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text,language='english')
+    text = nltk.word_tokenize(text)  # remove language='english' argument
     y = []
 
     # Keep only alphanumeric tokens
@@ -50,11 +50,11 @@ with open("Model.pkl", 'rb') as f:
 
 # Streamlit UI
 st.title("SMS/Email Spam Classifier")
-input = st.text_area("Enter sms/email here")
+input_text = st.text_area("Enter sms/email here")
 
 # Predict button
 if st.button('predict'):
-    transformed_text = transform_text(input)
+    transformed_text = transform_text(input_text)
     vector_input = cv.transform([transformed_text])
     result = model.predict(vector_input)[0]
 
